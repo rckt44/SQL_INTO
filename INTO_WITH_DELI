@@ -1,0 +1,3 @@
+proc sql noprint;
+select cats(",",yourvariablename,",") into:yourmacroname separated by ',' from yourtablename;
+quit;
