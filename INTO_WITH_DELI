@@ -1,3 +1,7 @@
 proc sql noprint;
 select cats(",",yourvariablename,",") into:yourmacroname separated by ',' from yourtablename;
 quit;
+
+proc sql noprint;
+select distinct cats(",",yourvariablename,",") into:yourmacroname separated by ',' from yourtablename;
+quit;
