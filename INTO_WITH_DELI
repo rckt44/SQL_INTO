@@ -9,3 +9,9 @@ quit;
 proc sql noprint;
 select distinct compress("name_"|| varname) into:yourmacroname separated by ','from yourtablename;
 quit;
+
+proc sql;
+/*the format can be any, like format=3. or format =12.*/
+select sum(count(distinct yourvar),2) format=2. into:yourmacrovar 
+from yourtable (where=yournextvar not in ('varvalues')));
+quit;
