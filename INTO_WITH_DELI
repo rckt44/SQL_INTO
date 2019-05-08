@@ -15,3 +15,17 @@ proc sql;
 select sum(count(distinct yourvar),2) format=2. into:yourmacrovar 
 from yourtable (where=yournextvar not in ('varvalues')));
 quit;
+
+
+/*=================list variables into macro beginning from certain words==============*/
+proc contents data=sashelp.bweight noprint
+out=data_info(keep=name varnum);
+run;
+
+proc sql noprint;
+select distinct NAME into:vlist seperated by ' ' 
+from data_info
+where substr(NAME,1,1)='M';
+quit;
+%put &=vlist;
+/*=======================================================================================*/
